@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   sast:
-    run-out: ubuntu-latest
+    runs-out: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -13,11 +13,11 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@3
+        uses: ./.github/codeql-action/init@3
         with:
           languages: 'javascript'
       - name: Run CodeQL analysis
-        uses: github/codeql-action/analyze@3
+        uses: ./.github/codeql-action/analyze@3
       - name: Save CodeQL SARIF report
         uses: actions/upload-artifact@v4
         with:
